@@ -1,4 +1,4 @@
-class Carro {
+export default class Carro {
     private modelo: string
     private numeroPortas: number
     private velocidade: number = 0

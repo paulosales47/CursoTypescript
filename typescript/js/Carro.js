@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 class Carro {
     constructor(modelo, numeroPortas) {
         this.velocidade = 0;
@@ -15,5 +16,6 @@ class Carro {
         return this.velocidade;
     }
 }
+exports.default = Carro;
 let carro = new Carro("ABC", 5);
 console.log(carro);
