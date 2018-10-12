@@ -1,23 +1,12 @@
-export class Carro {
-    private modelo: string
-    private numeroPortas: number
-    private velocidade: number = 0
+import Veiculo from "./Veiculo";
 
+export class Carro extends Veiculo{
+    private numeroPortas: number
+    
     constructor(modelo: string, numeroPortas: number){
+        super(0);
         this.modelo = modelo;
         this.numeroPortas = numeroPortas;
-    }
-
-    public Acelerar(): void {
-        this.velocidade = this.velocidade + 10;
-    }
-
-    public Parar(): void {
-        this.velocidade = 0;
-    }
-
-    public VelocidadeAtual(): number {
-        return this.velocidade;
     }
 }
 
