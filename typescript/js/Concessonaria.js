@@ -13,7 +13,7 @@ class Concessonaria {
         this._endereco = endereco;
         this._listaCarros = listaCarros;
     }
-    getListaCarros() {
+    ForneceListaCarro() {
         this._listaCarros.map((carro) => {
             console.log(carro);
         });
@@ -28,6 +28,6 @@ let listaCarros = [
     new Carro_1.Carro("Fiat", 5)
 ];
 let concessonaria = new Concessonaria("Av. Paulista", listaCarros);
-concessonaria.getListaCarros();
+concessonaria.ForneceListaCarro();
 console.log(concessonaria.ListaCarro);
 console.log(Carro_1.default);

@@ -1,5 +1,7 @@
 import taxaJurosVenda, { Carro } from "./Carro"
-class Concessonaria{
+import IConcessonaria from "./IConcessonaria"
+class Concessonaria implements IConcessonaria{
+
     private _endereco: string;
     private _listaCarros: Array<Carro>;
 
@@ -8,7 +10,7 @@ class Concessonaria{
         this._listaCarros = listaCarros;
     }
 
-    public getListaCarros(): void{
+    public ForneceListaCarro(): void{
         this._listaCarros.map((carro: Carro) =>{
             console.log(carro);
         });
@@ -28,6 +30,6 @@ let listaCarros = [
 ]
 
 let concessonaria = new Concessonaria("Av. Paulista", listaCarros);
-concessonaria.getListaCarros();
+concessonaria.ForneceListaCarro();
 console.log(concessonaria.ListaCarro);
 console.log(taxaJurosVenda);
