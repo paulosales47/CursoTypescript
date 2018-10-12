@@ -16,4 +16,5 @@ class Carro {
         return this.velocidade;
     }
 }
-exports.default = Carro;
+exports.Carro = Carro;
+exports.taxaJurosVenda = 6.5;

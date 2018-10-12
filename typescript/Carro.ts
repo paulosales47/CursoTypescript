@@ -1,4 +1,4 @@
-export default class Carro {
+export class Carro {
     private modelo: string
     private numeroPortas: number
     private velocidade: number = 0
@@ -20,3 +20,5 @@ export default class Carro {
         return this.velocidade;
     }
 }
+
+export let taxaJurosVenda: number = 6.5;
