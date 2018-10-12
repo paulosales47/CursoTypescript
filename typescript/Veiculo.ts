@@ -1,6 +1,6 @@
 export default class Veiculo {
     protected modelo: string = '';
-    private _velocidade: number = 0;
+    protected _velocidade: number = 0;
 
     constructor(velocidadeInicial: number)
     {

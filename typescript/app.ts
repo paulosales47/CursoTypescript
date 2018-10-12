@@ -15,7 +15,10 @@ import {Carro} from "./Carro"
 import Moto from "./Moto"
 
 let carro = new Carro("Ford", 4);
-let moto = new Moto("Honda", 100)
+let moto = new Moto("Honda", 0)
+
+carro.Acelerar();
+moto.Acelerar();
 
 console.log(carro);
 console.log(moto);

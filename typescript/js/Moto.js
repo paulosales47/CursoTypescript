@@ -9,5 +9,8 @@ class Moto extends Veiculo_1.default {
         super(velocidadeInicial);
         this.modelo = modelo;
     }
+    Acelerar() {
+        this._velocidade = this._velocidade + 20;
+    }
 }
 exports.default = Moto;
