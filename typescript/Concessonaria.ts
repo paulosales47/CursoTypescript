@@ -1,16 +1,25 @@
+import Carro from "./Carro"
 class Concessonaria{
     private _endereco: string;
-    private _listaCarros: any;
+    private _listaCarros: Array<Carro>;
 
-    constructor(endereco: string, listaCarros: any){
+    constructor(endereco: string, listaCarros: Array<Carro>){
         this._endereco = endereco;
         this._listaCarros = listaCarros;
     }
 
-    public getListaCarros(): any{
-        return this._listaCarros;
+    public getListaCarros(): void{
+        this._listaCarros.map((carro: Carro) =>{
+            console.log(carro);
+        });
     }
 }
 
-let concessonaria = new Concessonaria("Av. Paulista", Array("A", "B", "C", "D", "E"));
-console.log(typeof(concessonaria.getListaCarros()));
+let listaCarros = [
+    new Carro("Ferrari", 2),
+    new Carro("Mercedez", 4),
+    new Carro("Fiat", 5)
+]
+
+let concessonaria = new Concessonaria("Av. Paulista", listaCarros);
+concessonaria.getListaCarros();

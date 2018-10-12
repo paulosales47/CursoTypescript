@@ -17,5 +17,3 @@ class Carro {
     }
 }
 exports.default = Carro;
-let carro = new Carro("ABC", 5);
-console.log(carro);

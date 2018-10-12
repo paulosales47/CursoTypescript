@@ -20,6 +20,3 @@ export default class Carro {
         return this.velocidade;
     }
 }
-
-let carro = new Carro("ABC", 5)
-console.log(carro);
