@@ -14,6 +14,9 @@ class Concessonaria {
             console.log(carro);
         });
     }
+    get ListaCarro() {
+        return this._listaCarros;
+    }
 }
 let listaCarros = [
     new Carro_1.default("Ferrari", 2),
@@ -22,3 +25,4 @@ let listaCarros = [
 ];
 let concessonaria = new Concessonaria("Av. Paulista", listaCarros);
 concessonaria.getListaCarros();
+console.log(concessonaria.ListaCarro);

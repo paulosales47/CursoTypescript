@@ -13,6 +13,12 @@ class Concessonaria{
             console.log(carro);
         });
     }
+
+    get ListaCarro(): Array<Carro>
+    {
+        return this._listaCarros;
+    }
+    
 }
 
 let listaCarros = [
@@ -23,3 +29,4 @@ let listaCarros = [
 
 let concessonaria = new Concessonaria("Av. Paulista", listaCarros);
 concessonaria.getListaCarros();
+console.log(concessonaria.ListaCarro);
