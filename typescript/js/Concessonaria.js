@@ -1,6 +1,13 @@
 "use strict";
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+    result["default"] = mod;
+    return result;
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-const Carro_1 = require("./Carro");
+const Carro_1 = __importStar(require("./Carro"));
 class Concessonaria {
     constructor(endereco, listaCarros) {
         this._endereco = endereco;
@@ -23,4 +30,4 @@ let listaCarros = [
 let concessonaria = new Concessonaria("Av. Paulista", listaCarros);
 concessonaria.getListaCarros();
 console.log(concessonaria.ListaCarro);
-console.log(Carro_1.taxaJurosVenda);
+console.log(Carro_1.default);

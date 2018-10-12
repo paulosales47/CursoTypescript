@@ -21,4 +21,5 @@ export class Carro {
     }
 }
 
-export let taxaJurosVenda: number = 6.5;
+let taxaJurosVenda: number = 6.5;
+export default taxaJurosVenda;

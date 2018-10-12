@@ -17,4 +17,5 @@ class Carro {
     }
 }
 exports.Carro = Carro;
-exports.taxaJurosVenda = 6.5;
+let taxaJurosVenda = 6.5;
+exports.default = taxaJurosVenda;

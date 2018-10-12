@@ -1,4 +1,4 @@
-import { Carro, taxaJurosVenda as juros } from "./Carro"
+import taxaJurosVenda, { Carro } from "./Carro"
 class Concessonaria{
     private _endereco: string;
     private _listaCarros: Array<Carro>;
@@ -30,4 +30,4 @@ let listaCarros = [
 let concessonaria = new Concessonaria("Av. Paulista", listaCarros);
 concessonaria.getListaCarros();
 console.log(concessonaria.ListaCarro);
-console.log(juros);
+console.log(taxaJurosVenda);
