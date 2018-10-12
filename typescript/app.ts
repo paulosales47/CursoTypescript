@@ -22,3 +22,14 @@ moto.Acelerar();
 
 console.log(carro);
 console.log(moto);
+
+
+//AULA 29
+import ConcessonariaDAO from "./DAO/ConcessonariaDAO"
+
+let DAO = new ConcessonariaDAO("TB_CARRO");
+
+DAO.inserir(carro);
+DAO.atualizar(carro);
+DAO.remover(1);
+
