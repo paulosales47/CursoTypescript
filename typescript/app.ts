@@ -33,3 +33,10 @@ DAO.inserir(carro);
 DAO.atualizar(carro);
 DAO.remover(1);
 
+//AULA 30
+
+import DAOGeneric from "./DAO/GenericDAO"
+import { Pessoa } from "./Pessoa";
+
+let DAOCarro = new DAOGeneric<Carro>("TB_CARRO");
+let DAOPessoa = new DAOGeneric<Pessoa>("TB_PESSOA");

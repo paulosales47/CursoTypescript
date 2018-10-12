@@ -26,3 +26,7 @@ let DAO = new ConcessonariaDAO_1.default("TB_CARRO");
 DAO.inserir(carro);
 DAO.atualizar(carro);
 DAO.remover(1);
+//AULA 30
+const GenericDAO_1 = __importDefault(require("./DAO/GenericDAO"));
+let DAOCarro = new GenericDAO_1.default("TB_CARRO");
+let DAOPessoa = new GenericDAO_1.default("TB_PESSOA");
