@@ -1,7 +1,6 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import {Frase} from '../shared/frase.model'
 import {FRASES as ListaFrases} from './frases-mock'
-import { runInThisContext } from 'vm';
 
 @Component({
   selector: 'app-painel',
@@ -13,7 +12,7 @@ export class PainelComponent implements OnInit {
   public Resposta: string = '';
   public FraseRodada: Frase;
   public NumeroRodada: number = 0;
-  private NumeroTentativasRestantes: number = 3;
+  public NumeroTentativasRestantes: number = 3;
   public PorcentagemProgresso: number = 0;
   public Frases: Frase[] = ListaFrases;
   public Instrucao: string = "Traduza a frase: ";
