@@ -14,7 +14,11 @@ export class PainelComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  public AtualizaResposta(): void
+  {
+    console.log("Teste");
   }
 
 }
