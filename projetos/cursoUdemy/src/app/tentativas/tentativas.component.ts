@@ -24,6 +24,7 @@ export class TentativasComponent implements OnInit, OnChanges {
   constructor() 
   {}
 
-  ngOnInit() {}
+  ngOnInit() 
+  {}
 
 }
