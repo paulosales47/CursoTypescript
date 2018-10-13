@@ -10,7 +10,7 @@ import { Alert } from 'selenium-webdriver';
 })
 export class PainelComponent implements OnInit {
 
-  public Resposta: string;
+  public Resposta: string = '';
   public FraseRodada: Frase;
   public NumeroRodada: number = 0;
   public PorcentagemProgresso: number = 25;
@@ -19,7 +19,7 @@ export class PainelComponent implements OnInit {
 
   constructor() 
   {
-    this.FraseRodada = this.Frases[this.NumeroRodada];
+    this.AtualizaFraseRodada();
   }
 
   ngOnInit() {}
@@ -37,7 +37,7 @@ export class PainelComponent implements OnInit {
       this.PorcentagemProgresso = this.PorcentagemProgresso + (100 / this.Frases.length);
       
       if(this.NumeroRodada < this.Frases.length-1)
-        this.FraseRodada = this.Frases[this.NumeroRodada];
+        this.AtualizaFraseRodada();
       else
         alert("Você ganhou!!!");
     }
@@ -48,4 +48,9 @@ export class PainelComponent implements OnInit {
 
   }
 
+  private AtualizaFraseRodada(): void
+  {
+    this.FraseRodada = this.Frases[this.NumeroRodada];
+    this.Resposta = '';
+  }
 }
