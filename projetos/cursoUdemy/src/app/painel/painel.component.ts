@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Frase} from '../shared/frase.model'
 import {FRASES as ListaFrases} from './frases-mock'
-import { Alert } from 'selenium-webdriver';
 
 @Component({
   selector: 'app-painel',
