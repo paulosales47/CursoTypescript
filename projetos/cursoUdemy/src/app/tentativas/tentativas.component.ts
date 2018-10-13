@@ -9,7 +9,11 @@ import { Coracao } from '../shared/coracao.model'
 export class TentativasComponent implements OnInit, OnChanges {
   
   ngOnChanges(): void {
-    console.log(this.NumeroTentativasRestantes);
+    if(this.NumeroTentativasRestantes !== this.Coracoes.length)
+    {
+      let indice = this.Coracoes.length - this.NumeroTentativasRestantes;
+      this.Coracoes[indice - 1].Cheio = false;
+    }
   }
 
   public Coracoes: Coracao[] = [ new Coracao(true), new Coracao(true), new Coracao(true) ]
