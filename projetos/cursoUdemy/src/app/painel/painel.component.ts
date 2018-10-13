@@ -13,6 +13,7 @@ export class PainelComponent implements OnInit {
   public Resposta: string;
   public FraseRodada: Frase;
   public NumeroRodada: number = 0;
+  public PorcentagemProgresso: number = 25;
   public Frases: Frase[] = ListaFrases;
   public Instrucao: string = "Traduza a frase: ";
 
@@ -30,18 +31,19 @@ export class PainelComponent implements OnInit {
 
   public VerificaResposta(): void {
     
-    if(this.Resposta == this.FraseRodada.FrasePtBr && this.NumeroRodada < this.Frases.length-1)
+    if(this.Resposta == this.FraseRodada.FrasePtBr)
     {
       this.NumeroRodada++;
-      this.FraseRodada = this.Frases[this.NumeroRodada];
+      this.PorcentagemProgresso = this.PorcentagemProgresso + (100 / this.Frases.length);
+      
+      if(this.NumeroRodada < this.Frases.length-1)
+        this.FraseRodada = this.Frases[this.NumeroRodada];
+      else
+        alert("Você ganhou!!!");
     }
     else if(this.Resposta != this.FraseRodada.FrasePtBr)
     {
       alert("A trdução está incorreta");
-    }
-    else
-    {
-      alert("Você Ganhou!!!");
     }
 
   }
