@@ -41,7 +41,7 @@ export class PainelComponent implements OnInit {
       else
         alert("Você ganhou!!!");
     }
-    else if(this.Resposta != this.FraseRodada.FrasePtBr)
+    else
     {
       alert("A trdução está incorreta");
     }
