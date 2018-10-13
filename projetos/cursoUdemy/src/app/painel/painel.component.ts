@@ -13,6 +13,7 @@ export class PainelComponent implements OnInit {
   public Resposta: string = '';
   public FraseRodada: Frase;
   public NumeroRodada: number = 0;
+  private NumeroTentativasRestantes: number = 3;
   public PorcentagemProgresso: number = 25;
   public Frases: Frase[] = ListaFrases;
   public Instrucao: string = "Traduza a frase: ";
@@ -44,8 +45,19 @@ export class PainelComponent implements OnInit {
     else
     {
       alert("A trdução está incorreta");
+      this.NumeroTentativasRestantes = this.NumeroTentativasRestantes -1;
     }
 
+    this.VerificaTentativasRestantes();
+
+  }
+
+  private VerificaTentativasRestantes() 
+  {
+    if (this.NumeroTentativasRestantes == -1) 
+    {
+      alert("Fim de jogo");
+    }
   }
 
   private AtualizaFraseRodada(): void
