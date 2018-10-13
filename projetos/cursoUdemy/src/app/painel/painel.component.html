@@ -1,10 +1,31 @@
-<app-progresso></app-progresso>
-<app-tentativas></app-tentativas>
+<div class="container">
+  <div class="jumbotron mt-4 p-4">
+    <div class="row"> 
+      <div class="col-sm-6">
+        <app-progresso></app-progresso>
+      </div>
+      <div class="col-sm-6">
+        <app-tentativas></app-tentativas>
+      </div>
+    </div>
 
-<p>
-  Esse é o componente painel
-</p>
+    <div class="row">
+      <div class="col">
+        <h6>Traduza a frase:</h6>
+        <p>How are you?</p>
 
-<button class="btn btn-primary">
-  Verificar
-</button>
+        <div class="form-group">
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <div class="d-flex justify-content-end">
+              <button type="button" class="btn btn-primary">Primary</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
