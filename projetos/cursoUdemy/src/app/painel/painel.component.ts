@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Frase} from '../shared/frase.model'
 import {FRASES as ListaFrases} from './frases-mock'
+import { Alert } from 'selenium-webdriver';
 
 @Component({
   selector: 'app-painel',
@@ -9,22 +10,40 @@ import {FRASES as ListaFrases} from './frases-mock'
 })
 export class PainelComponent implements OnInit {
 
-  public Resposta: string
+  public Resposta: string;
+  public FraseRodada: Frase;
+  public NumeroRodada: number = 0;
   public Frases: Frase[] = ListaFrases;
-  public Instrucao: string = "Traduza a frase: "
+  public Instrucao: string = "Traduza a frase: ";
 
-  constructor() { }
+  constructor() 
+  {
+    this.FraseRodada = this.Frases[this.NumeroRodada];
+  }
 
   ngOnInit() {}
 
   public AtualizaResposta(evento: Event): void
   {
     this.Resposta = (<HTMLInputElement>evento.target).value;
-    console.log(this.Resposta);
   }
 
   public VerificaResposta(): void {
-    console.log("Verifica Resposta: "+this.Resposta);
+    
+    if(this.Resposta == this.FraseRodada.FrasePtBr && this.NumeroRodada < this.Frases.length-1)
+    {
+      this.NumeroRodada++;
+      this.FraseRodada = this.Frases[this.NumeroRodada];
+    }
+    else if(this.Resposta != this.FraseRodada.FrasePtBr)
+    {
+      alert("A trdução está incorreta");
+    }
+    else
+    {
+      alert("Você Ganhou!!!");
+    }
+
   }
 
 }
