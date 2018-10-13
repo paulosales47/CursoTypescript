@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import {Frase} from '../shared/frase.model'
 import {FRASES as ListaFrases} from './frases-mock'
 import { runInThisContext } from 'vm';
@@ -17,11 +17,14 @@ export class PainelComponent implements OnInit {
   public PorcentagemProgresso: number = 0;
   public Frases: Frase[] = ListaFrases;
   public Instrucao: string = "Traduza a frase: ";
-  public FimJogo: boolean = false;
+  
+  @Output()
+  public EncerraJogo: EventEmitter<string>
 
   constructor() 
   {
     this.AtualizaFraseRodada();
+    this.EncerraJogo = new EventEmitter();
   }
 
   ngOnInit() {}
@@ -32,25 +35,22 @@ export class PainelComponent implements OnInit {
   }
 
   public VerificaResposta(): void {
-    
-    if(this.FimJogo == false)
-    {
-      if(this.Resposta == this.FraseRodada.FrasePtBr)
-      {
-        this.NumeroRodada++;
-        if(this.PorcentagemProgresso < 100)
-          this.PorcentagemProgresso = this.PorcentagemProgresso + 25;
-        
-        this.VerificaVitoria();
-      }
-      else
-      {
-        alert("A trdução está incorreta");
-        this.NumeroTentativasRestantes = this.NumeroTentativasRestantes -1;
-      }
 
-      this.VerificaTentativasRestantes();
+    if(this.Resposta == this.FraseRodada.FrasePtBr)
+    {
+      this.NumeroRodada++;
+      if(this.PorcentagemProgresso < 100)
+        this.PorcentagemProgresso = this.PorcentagemProgresso + 25;
+      
+      this.VerificaVitoria();
     }
+    else
+    {
+      alert("A trdução está incorreta");
+      this.NumeroTentativasRestantes = this.NumeroTentativasRestantes -1;
+    }
+
+    this.VerificaTentativasRestantes();
   }
 
   private VerificaVitoria() 
@@ -60,25 +60,22 @@ export class PainelComponent implements OnInit {
     else
     {
       alert("Você ganhou!!!");
-      this.FimJogo = true;
+      this.EncerraJogo.emit("Vitoria");
     }
   }
 
   private VerificaTentativasRestantes() 
   {
-    if (this.NumeroTentativasRestantes == -1) 
+    if (this.NumeroTentativasRestantes == -1)
     {
       alert("Fim de jogo");
-      this.FimJogo = true;
+      this.EncerraJogo.emit("Derrota");
     }
   }
 
   private AtualizaFraseRodada(): void
   {
-    if(this.FimJogo == false)
-    {
-      this.FraseRodada = this.Frases[this.NumeroRodada];
-      this.Resposta = '';
-    }
+    this.FraseRodada = this.Frases[this.NumeroRodada];
+    this.Resposta = '';
   }
 }

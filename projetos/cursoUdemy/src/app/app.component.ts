@@ -6,4 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
+  public JogoAndamento: boolean = true;
+
+  public EncerrarJogo(tipo: string): void{
+    this.JogoAndamento = false;
+  }
+
 }
