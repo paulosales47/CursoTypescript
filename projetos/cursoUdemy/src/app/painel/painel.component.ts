@@ -9,6 +9,7 @@ import {FRASES as ListaFrases} from './frases-mock'
 })
 export class PainelComponent implements OnInit {
 
+  public Resposta: string
   public Frases: Frase[] = ListaFrases;
   public Instrucao: string = "Traduza a frase: "
 
@@ -16,9 +17,10 @@ export class PainelComponent implements OnInit {
 
   ngOnInit() {}
 
-  public AtualizaResposta(): void
+  public AtualizaResposta(evento: Event): void
   {
-    console.log("Teste");
+    this.Resposta = (<HTMLInputElement>evento.target).value;
+    console.log(this.Resposta);
   }
 
 }
