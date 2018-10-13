@@ -1,5 +1,9 @@
 #CRIAÇÃO DE PROJETO
 
-#### ng new nomeProjeto
+```
+ng new nomeProjeto
 
-#### npm install (Dentro do diretório do projeto)
+npm install
+```
+
+### (Dentro do diretório do projeto)
