@@ -23,4 +23,8 @@ export class PainelComponent implements OnInit {
     console.log(this.Resposta);
   }
 
+  public VerificaResposta(): void {
+    console.log("Verifica Resposta: "+this.Resposta);
+  }
+
 }
