@@ -61,8 +61,8 @@ export class OfertasService{
     public GetOfertasPromise(): Promise<Array<Oferta>>
     {    
         return new Promise((resolve, reject) => {
-            resolve(this.ofertas)
-            //reject({codigoErro: 404, mensagemErro: 'Servidor não encontrado'})
+            //resolve(this.ofertas)
+            reject({codigoErro: 404, mensagemErro: 'Servidor não encontrado'})
         })
     }
 }
