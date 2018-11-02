@@ -1,4 +1,5 @@
 import {Oferta} from "./shared/oferta.model"
+import { ReturnStatement } from "@angular/compiler";
 export class OfertasService{
 
     public ofertas: Array<Oferta> = [
@@ -57,5 +58,10 @@ export class OfertasService{
         return this.ofertas;
     }
 
-
+    public GetOfertasPromise(): Promise<Array<Oferta>>
+    {    
+        return new Promise((resolve, reject) => {
+            resolve(this.ofertas)
+        })
+    }
 }
