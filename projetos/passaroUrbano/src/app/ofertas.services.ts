@@ -61,8 +61,26 @@ export class OfertasService{
     public GetOfertasPromise(): Promise<Array<Oferta>>
     {    
         return new Promise((resolve, reject) => {
-            //resolve(this.ofertas)
-            reject({codigoErro: 404, mensagemErro: 'Servidor não encontrado'})
+            setTimeout(() => resolve(this.ofertas), 3000)
+            //reject({codigoErro: 404, mensagemErro: 'Servidor não encontrado'})
+        })
+        .then(( ofertas: Array<Oferta>) => {
+            console.log("Tratando retorno 1");
+            return ofertas;
+        })
+        .then(( ofertas: Array<Oferta>) => {
+            console.log("Tratando retorno 2");
+            return ofertas;
+        })
+        .then(( ofertas: Array<Oferta>) => {
+            console.log("Tratando retorno 3");
+            return new Promise( (resolve2, reject2) =>{
+                setTimeout(() => resolve2(ofertas), 3000);
+            });
+        })
+        .then(( ofertas: Array<Oferta>) => {
+            console.log("Tratando retorno 3 após execução do segundo promise");
+            return ofertas;
         })
     }
 }
