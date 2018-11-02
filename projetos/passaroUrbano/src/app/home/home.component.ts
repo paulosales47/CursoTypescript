@@ -15,11 +15,10 @@ export class HomeComponent implements OnInit {
   constructor(private ofertaService: OfertasService) { }
 
   ngOnInit() {
-    this.ofertaService.GetOfertasPromise()
+    this.ofertaService.GetOfertas()
     .then((ofertas: Array<Oferta>) => 
     {
       this.ofertas = ofertas;
-      console.log("Promessa chamada depois de 3 segundos");
     })
     .catch((retorno: any) => console.log(retorno))
 
