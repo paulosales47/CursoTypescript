@@ -5,36 +5,35 @@
     <h5 class="text-center">Conheça as melhores ofertas de restaurantes:</h5>
   </div>
 
-  <hr />
-
-  <div class="row" *ngFor="let oferta of ofertas">
-    <div class="col-md-4">
-      <img [src]="oferta.imagens[0].url" />
+  <div *ngFor="let oferta of ofertas">
+    <div class="row">
+      <div class="col-md-4">
+        <img [src]="oferta.imagens[0].url" />
+      </div>
+  
+      <div class="col-md-8">
+        <div class="row">
+          <h4>{{oferta.titulo}}</h4>
+        </div>
+  
+        <div class="row">
+          <h5>{{oferta.descricaoOferta}}</h5>
+        </div>
+  
+        <div class="row">
+          <p>Anunciado por: <b>{{oferta.anunciante}}</b></p>
+        </div>
+  
+        <div class="row">
+          <p>R$ {{oferta.valor}}</p>
+        </div>
+  
+        <div class="row">
+          <button class="btn btn-outline-success">Ver oferta</button>
+        </div>
+      </div>
     </div>
-
-    <div class="col-md-8">
-      <div class="row">
-        <h4>{{oferta.titulo}}</h4>
-      </div>
-
-      <div class="row">
-        <h5>{{oferta.descricaoOferta}}</h5>
-      </div>
-
-      <div class="row">
-        <p>Anunciado por: <b>{{oferta.anunciante}}</b></p>
-      </div>
-
-      <div class="row">
-        <p>R$ {{oferta.preco}}</p>
-      </div>
-
-      <div class="row">
-        <button class="btn btn-outline-success">Ver oferta</button>
-      </div>
-    </div>
+    <hr />
   </div>
-
-  <hr />
 
 </div>
