@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router'
 
 @Component({
   selector: 'aws-oferta',
@@ -6,10 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./oferta.component.css']
 })
 export class OfertaComponent implements OnInit {
-
-  constructor() { }
+ 
+  constructor(private route: ActivatedRoute) {}
 
   ngOnInit() {
+    console.log(this.route.snapshot.params['id']);
   }
 
 }
