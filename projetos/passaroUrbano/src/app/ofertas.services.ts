@@ -14,7 +14,7 @@ export class OfertasService{
         .then((resposta: any) => resposta.json())
     }
 
-    public  GetOfertasCategoria(categoria: string): Promise<Array<Oferta>>
+    public GetOfertasCategoria(categoria: string): Promise<Array<Oferta>>
     {
         return this.http.get(`http://localhost:3000/ofertas?categoria=${categoria}`)
         .toPromise()

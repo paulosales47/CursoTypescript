@@ -10,11 +10,17 @@ import { Oferta } from '../shared/oferta.model';
 })
 export class RestauranteComponent implements OnInit {
 
+  public ofertas: Array<Oferta>
+
   constructor(private ofertaService: OfertasService) { }
 
   ngOnInit() {
     this.ofertaService.GetOfertasCategoria('restaurante')
-    .then((ofertas: Array<Oferta>) => console.log(ofertas))
+    .then((ofertas2: Array<Oferta>) =>
+    {
+      this.ofertas = ofertas2;
+    })
+    .catch((retorno: any) => console.log(retorno))
   }
 
 }
