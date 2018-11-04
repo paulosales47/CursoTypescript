@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router'
 import { OfertasService} from '../ofertas.services'
 import { Oferta } from '../shared/oferta.model';
-import { Observable, interval, observable, Subject, pipe, Observer } from 'rxjs';
+import { Observable, interval, observable, Subject, pipe, Observer, Subscription } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 @Component({
@@ -11,9 +11,13 @@ import { takeUntil } from 'rxjs/operators';
   styleUrls: ['./oferta.component.css'],
   providers: [OfertasService]
 })
-export class OfertaComponent implements OnInit {
+export class OfertaComponent implements OnInit, OnDestroy {
+  ngOnDestroy(): void {
+    this.observableTeste.unsubscribe();
+  }
  
   public oferta: Oferta;
+  private observableTeste: Subscription;
 
   constructor(
      private route: ActivatedRoute
@@ -33,7 +37,7 @@ export class OfertaComponent implements OnInit {
     })
 
     //Observable (observador)
-    observableTeste.subscribe(
+    this.observableTeste = observableTeste.subscribe(
        (resultado: string) => console.log(resultado)
       ,(erro: string) => console.log(erro)
       ,() => console.log('Evento completo')
