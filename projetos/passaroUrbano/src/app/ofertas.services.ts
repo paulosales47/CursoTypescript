@@ -4,7 +4,7 @@ import {Http} from '@angular/http'
 
 import {URL_API} from './app.api'
 import { Observable } from "rxjs";
-import { map } from 'rxjs/operators';
+import { map, retry } from 'rxjs/operators';
 
 @Injectable()
 export class OfertasService{
@@ -50,7 +50,10 @@ export class OfertasService{
     public PesquisaOferta(termoPesquisa: string): Observable<Array<Oferta>>
     {
         return this.http.get(`${URL_API}ofertas?descricaoOferta_like=${termoPesquisa}`)
-        .pipe(map((resposta: any) => resposta.json()))
+        .pipe(
+             map((resposta: any) => resposta.json())
+            ,retry(10)
+            )
 
     }
 }
