@@ -1,6 +1,6 @@
 import {Oferta} from "./shared/oferta.model"
 import {Injectable} from '@angular/core'
-import {Http} from '@angular/http'
+import {Http, Response} from '@angular/http'
 
 import {URL_API} from './app.api'
 import { Observable } from "rxjs";
@@ -16,42 +16,42 @@ export class OfertasService{
     {
         return this.http.get(`${URL_API}ofertas`)
         .toPromise()
-        .then((resposta: any) => resposta.json())
+        .then((resposta: Response) => resposta.json())
     }
 
     public GetOfertasCategoria(categoria: string): Promise<Array<Oferta>>
     {
         return this.http.get(`${URL_API}ofertas?categoria=${categoria}`)
         .toPromise()
-        .then((resposta: any) => resposta.json())
+        .then((resposta: Response) => resposta.json())
     }
 
     public GetOfertaId(id: number): Promise<Oferta>
     {
         return this.http.get(`${URL_API}ofertas?id=${id}`)
         .toPromise()
-        .then((resposta: any)=> resposta.json().shift())
+        .then((resposta: Response)=> resposta.json().shift())
     }
 
     public GetComoUsarOfertaId(id: number): Promise<string>
     {
         return this.http.get(`${URL_API}como-usar?id=${id}`)
         .toPromise()
-        .then((resposta: any) => resposta.json().shift().descricao)
+        .then((resposta: Response) => resposta.json().shift().descricao)
     }
 
     public GetOndeFicaOfertaId(id: number): Promise<string>
     {
         return this.http.get(`${URL_API}onde-fica?id=${id}`)
         .toPromise()
-        .then((resposta: any) => resposta.json().shift().descricao)
+        .then((resposta: Response) => resposta.json().shift().descricao)
     }
 
     public PesquisaOferta(termoPesquisa: string): Observable<Array<Oferta>>
     {
         return this.http.get(`${URL_API}ofertas?descricaoOferta_like=${termoPesquisa}`)
         .pipe(
-             map((resposta: any) => resposta.json())
+             map((resposta: Response) => resposta.json())
             ,retry(10)
             )
 
