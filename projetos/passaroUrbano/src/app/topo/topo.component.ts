@@ -20,6 +20,7 @@ export class TopoComponent implements OnInit {
     this.ofertas.subscribe(
        (ofertas: Array<Oferta>) => console.log(ofertas)
       ,(erro: any) => console.log(erro.status)
+      ,() => console.log('Fluxo de eventos completo')
     )
     
   }
