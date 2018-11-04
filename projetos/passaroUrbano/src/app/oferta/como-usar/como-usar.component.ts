@@ -1,17 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router'
+import {OfertasService} from '../../ofertas.services'
 
 @Component({
   selector: 'aws-como-usar',
   templateUrl: './como-usar.component.html',
-  styleUrls: ['./como-usar.component.css']
+  styleUrls: ['./como-usar.component.css'],
+  providers: [OfertasService]
+
 })
 export class ComoUsarComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute) { }
+  public comoUsar: string
+
+  constructor(
+     private route: ActivatedRoute
+    ,private ofertaService: OfertasService
+    ) { }
 
   ngOnInit() {
-    console.log(this.route.parent.snapshot.params['id']);
+    let ofertaId = this.route.parent.snapshot.params['id'];
+    this.ofertaService.GetComoUsarOfertaId(ofertaId)
+    .then((resposta: string) => this.comoUsar = resposta)
+    .catch((resposta: any) => console.log(resposta));
   
   }
 

@@ -19,15 +19,29 @@ export class OfertasService{
 
     public GetOfertasCategoria(categoria: string): Promise<Array<Oferta>>
     {
-        return this.http.get(`${URL_API}?categoria=${categoria}`)
+        return this.http.get(`${URL_API}ofertas?categoria=${categoria}`)
         .toPromise()
         .then((resposta: any) => resposta.json())
     }
 
     public GetOfertaId(id: number): Promise<Oferta>
     {
-        return this.http.get(`${URL_API}?id=${id}`)
+        return this.http.get(`${URL_API}ofertas?id=${id}`)
         .toPromise()
         .then((resposta: any)=> resposta.json().shift())
+    }
+
+    public GetComoUsarOfertaId(id: number): Promise<string>
+    {
+        return this.http.get(`${URL_API}como-usar?id=${id}`)
+        .toPromise()
+        .then((resposta: any) => resposta.json().shift().descricao)
+    }
+
+    public GetOndeFicaOfertaId(id: number): Promise<string>
+    {
+        return this.http.get(`${URL_API}onde-fica?id=${id}`)
+        .toPromise()
+        .then((resposta: any) => resposta.json().shift().descricao)
     }
 }
