@@ -9,6 +9,11 @@ export class TopoComponent implements OnInit {
 
   constructor() { }
 
+  public pesquisaOferta(event: Event): void {
+    let termo = (<HTMLInputElement>event.target).value;
+    console.log(termo);
+  }
+
   ngOnInit() {
   }
 
