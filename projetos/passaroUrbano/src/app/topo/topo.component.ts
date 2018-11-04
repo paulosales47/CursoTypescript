@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {OfertasService} from '../ofertas.services'
 import { Observable, Subject, of } from 'rxjs';
 import { Oferta } from '../shared/oferta.model';
-import { switchMap, debounceTime } from 'rxjs/operators';
+import { switchMap, debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 @Component({
   selector: 'aws-topo',
@@ -26,6 +26,7 @@ export class TopoComponent implements OnInit {
     this.ofertas = this.subjectPesquisa
     .pipe(
      debounceTime(1000)
+    ,distinctUntilChanged()
     ,switchMap((termoPesquisaOferta: string) => 
     {
       if(termoPesquisaOferta.trim() === '')
