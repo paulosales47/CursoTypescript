@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router'
 import { OfertasService} from '../ofertas.services'
 import { Oferta } from '../shared/oferta.model';
+import { Observable, interval, observable, Subject, pipe } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'aws-oferta',
@@ -24,11 +26,10 @@ export class OfertaComponent implements OnInit {
     .then((oferta: Oferta) => this.oferta = oferta)
     .catch((resposta: any) => console.log(resposta));
 
-    this.route.params.subscribe(
-       (parametro: any) => console.log(parametro)
-      ,(erro: any) => console.log(erro)
-      ,() => console.log('Processamento concluído')
-    )
+    let tempo = interval(2000).pipe();
+
+    tempo.subscribe((intervalo: number) => console.log(intervalo));
+
 
   }
 
