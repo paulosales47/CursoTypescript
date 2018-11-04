@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router'
 import { OfertasService} from '../ofertas.services'
 import { Oferta } from '../shared/oferta.model';
-import { Observable, interval, observable, Subject, pipe } from 'rxjs';
+import { Observable, interval, observable, Subject, pipe, Observer } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 @Component({
@@ -26,11 +26,15 @@ export class OfertaComponent implements OnInit {
     .then((oferta: Oferta) => this.oferta = oferta)
     .catch((resposta: any) => console.log(resposta));
 
-    let tempo = interval(2000).pipe();
+    //Observable (observável)
+    let observableTeste = Observable.create((observer: Observer<string>) => {
+      observer.next('Primeiro evento da stream')
+    })
 
-    tempo.subscribe((intervalo: number) => console.log(intervalo));
-
-
+    //Observable (observador)
+    observableTeste.subscribe(
+      (resultado: string) => console.log(resultado)
+    )
   }
 
 }
