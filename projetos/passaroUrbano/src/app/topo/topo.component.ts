@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {OfertasService} from '../ofertas.services'
 import { Observable, Subject, of } from 'rxjs';
 import { Oferta } from '../shared/oferta.model';
-import { switchMap, debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { debounceTime, switchMap, distinctUntilChanged, catchError } from 'rxjs/operators';
 
 @Component({
   selector: 'aws-topo',
@@ -30,10 +30,15 @@ export class TopoComponent implements OnInit {
     ,switchMap((termoPesquisaOferta: string) => 
     {
       if(termoPesquisaOferta.trim() === '')
-        return of<Array<Oferta>>([])
+        return of([]);
       
         return this.ofertaService.PesquisaOferta(termoPesquisaOferta);
-    }));
+    })),
+    catchError ((erro: any) => 
+    {
+       console.log(erro);
+       return of([]);
+    })
 
     this.ofertas.subscribe( (ofertas: Array<Oferta>) => console.log(ofertas))
   }
