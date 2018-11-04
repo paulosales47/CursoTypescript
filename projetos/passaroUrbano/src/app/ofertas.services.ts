@@ -12,7 +12,7 @@ export class OfertasService{
 
     public GetOfertas(): Promise<Array<Oferta>>
     {
-        return this.http.get(URL_API)
+        return this.http.get(`${URL_API}ofertas`)
         .toPromise()
         .then((resposta: any) => resposta.json())
     }
