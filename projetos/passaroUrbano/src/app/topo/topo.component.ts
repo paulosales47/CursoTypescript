@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {OfertasService} from '../ofertas.services'
+import { Observable } from 'rxjs';
+import { Oferta } from '../shared/oferta.model';
 @Component({
   selector: 'aws-topo',
   templateUrl: './topo.component.html',
@@ -8,10 +10,16 @@ import {OfertasService} from '../ofertas.services'
 })
 export class TopoComponent implements OnInit {
 
+  public ofertas: Observable<Array<Oferta>>
+
   constructor(private ofertaService: OfertasService) { }
 
   public pesquisaOferta(termoPesquisaOferta: string): void {
-    console.log(termoPesquisaOferta);
+    this.ofertas = this.ofertaService.PesquisaOferta(termoPesquisaOferta)
+
+    this.ofertas.subscribe(
+      (ofertas: Array<Oferta>) => console.log(ofertas)
+    )
     
   }
 

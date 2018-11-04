@@ -49,7 +49,7 @@ export class OfertasService{
 
     public PesquisaOferta(termoPesquisa: string): Observable<Array<Oferta>>
     {
-        return this.http.get(`${URL_API}ofertas?descricaoOferta=${termoPesquisa}`)
+        return this.http.get(`${URL_API}ofertas?descricaoOferta_like=${termoPesquisa}`)
         .pipe(map((resposta: any) => resposta.json()))
 
     }
