@@ -7,13 +7,13 @@
 
   <hr />
 
-  <div class="row" *ngFor="let oferta of ofertas">
-    <div class="col-sm-6 mb-5">
+  <div class="row">
+    <div class="col-sm-4 mb-5" *ngFor="let oferta of ofertas">
       <div class="card">
        <img class="card-img-top img" [src]="oferta.imagens[0].url">
         <div class="card-block">
           <h4 class="card-title">{{oferta.titulo}}</h4>
-          <p class="card-text">{{oferta.descricaoOferta}}</p>
+          <p class="card-text">{{oferta.descricaoOferta | descricaoReduzida:43}}</p>
           <p class="preco">{{oferta.valor | currency:'BRL'}}</p>
           <a [routerLink]="['/oferta', oferta.id]" class="btn btn-outline-primary">Ver oferta</a>
         </div>
