@@ -4,6 +4,7 @@ import { HttpModule} from '@angular/http'
 import { RouterModule } from '@angular/router'
 
 import localePtBR from '@angular/common/locales/pt'
+import { registerLocaleData } from '@angular/common';
 
 import { ROUTES } from './app.routes'
 
@@ -16,7 +17,7 @@ import { DiversaoComponent } from './diversao/diversao.component';
 import { OfertaComponent } from './oferta/oferta.component';
 import { ComoUsarComponent } from './oferta/como-usar/como-usar.component';
 import { OndeFicaComponent } from './oferta/onde-fica/onde-fica.component';
-import { registerLocaleData } from '@angular/common';
+import { DescricaoReduzida } from './util/descricao-reduzida.pipe'
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { registerLocaleData } from '@angular/common';
     DiversaoComponent,
     OfertaComponent,
     ComoUsarComponent,
-    OndeFicaComponent
+    OndeFicaComponent,
+    DescricaoReduzida
   ],
   imports: [
     BrowserModule,
