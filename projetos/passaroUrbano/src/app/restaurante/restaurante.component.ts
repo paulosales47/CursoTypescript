@@ -11,6 +11,8 @@ import { Oferta } from '../shared/oferta.model';
 export class RestauranteComponent implements OnInit {
 
   public ofertas: Array<Oferta>
+  public dataTeste: Date = new Date();
+
 
   constructor(private ofertaService: OfertasService) { }
 
