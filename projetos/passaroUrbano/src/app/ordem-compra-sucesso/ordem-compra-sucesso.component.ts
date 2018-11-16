@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'aws-ordem-compra-sucesso',
@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrdemCompraSucessoComponent implements OnInit {
 
+
+  @Input() public idOrdemCompra: number 
   constructor() { }
 
   ngOnInit() {

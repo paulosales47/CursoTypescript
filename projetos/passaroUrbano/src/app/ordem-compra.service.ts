@@ -10,7 +10,7 @@ export class OrdemCompraService {
 
     constructor(private http: Http){}
 
-    public EfetivarCompra(ordemCompra: OrdemCompra): Observable<any>{
+    public EfetivarCompra(ordemCompra: OrdemCompra): Observable<number>{
 
         let headers: Headers = new Headers()
         headers.append('Content-type', 'application/json')
@@ -21,6 +21,6 @@ export class OrdemCompraService {
             ,new RequestOptions({headers: headers})
         )
         .pipe(
-            map((resposta: Response) => console.log(resposta.json())))
+            map((resposta: Response) => resposta.json().id))
     }
 }

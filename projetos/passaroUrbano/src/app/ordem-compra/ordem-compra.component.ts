@@ -10,6 +10,7 @@ import { OrdemCompra } from '../shared/ordem-compra.model';
 })
 export class OrdemCompraComponent implements OnInit {
 
+  public idOrdemCompra: number
   public endereco: string = ''
   public numero: number
   public complemento: string = ''
@@ -72,7 +73,8 @@ export class OrdemCompraComponent implements OnInit {
       ,this.complemento
       ,this.formaPagamento)
 
-      this.ordemCompraService.EfetivarCompra(this.ordemCompra).subscribe();
+      this.ordemCompraService.EfetivarCompra(this.ordemCompra)
+      .subscribe((idOrdemCompra: number) => this.idOrdemCompra = idOrdemCompra);
   }
 
 }

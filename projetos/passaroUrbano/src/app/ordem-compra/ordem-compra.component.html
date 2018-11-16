@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="ordem-compra mt-4 mb-5">
+  <div class="ordem-compra mt-4 mb-5" *ngIf="idOrdemCompra == undefined">
     <form novalidate>
     
       <h5>Sua Compra</h5>
@@ -122,4 +122,10 @@
       (click)="ConfirmaCompra()">Cofirmar compra</button>
     </form>
   </div>
+
+  <div *ngIf="idOrdemCompra !== undefined">
+      <aws-ordem-compra-sucesso [idOrdemCompra]=idOrdemCompra>
+      </aws-ordem-compra-sucesso>
+  </div>
+
 </div>
