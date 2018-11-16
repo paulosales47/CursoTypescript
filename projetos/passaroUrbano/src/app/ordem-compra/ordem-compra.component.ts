@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {OrdemCompraService } from './../ordem-compra.service'
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { OrdemCompra } from '../shared/ordem-compra.model';
 
 @Component({
   selector: 'aws-ordem-compra',
@@ -11,6 +12,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class OrdemCompraComponent implements OnInit {
 
   public formulario: FormGroup;
+  public idOrdemCompra: number;
 
   constructor(private ordemCompraService: OrdemCompraService) 
   {
@@ -25,11 +27,24 @@ export class OrdemCompraComponent implements OnInit {
   ngOnInit() {}
 
   public ConfirmaCompra(): void{
-
+    
     if(this.formulario.status === 'INVALID'){
       this.formulario.get('endereco').markAsTouched();
       this.formulario.get('numero').markAsTouched();
       this.formulario.get('formaPagamento').markAsTouched();
+      console.log('formulário invalido');
+    }
+    else
+    {
+      let ordemCompra = new OrdemCompra(
+         this.formulario.value.endereco
+        ,this.formulario.value.numero
+        ,this.formulario.value.complemento
+        ,this.formulario.value.formaPagamento
+      )
+      
+      this.ordemCompraService.EfetivarCompra(ordemCompra)
+      .subscribe((idOrdemCompra: number) => this.idOrdemCompra = idOrdemCompra)
     }
   }
 
