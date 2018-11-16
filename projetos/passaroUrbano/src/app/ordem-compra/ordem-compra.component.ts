@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {OrdemCompraService } from './../ordem-compra.service'
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'aws-ordem-compra',
@@ -9,7 +10,17 @@ import {OrdemCompraService } from './../ordem-compra.service'
 })
 export class OrdemCompraComponent implements OnInit {
 
-  constructor(private ordemCompraService: OrdemCompraService) { }
+  public formulario: FormGroup;
+
+  constructor(private ordemCompraService: OrdemCompraService) 
+  {
+    this.formulario = new FormGroup({
+       'endereco': new FormControl(null)
+       ,'numero': new FormControl(null)
+       ,'complemento': new FormControl(null)
+       ,'formaPagamento': new FormControl(null)
+    })
+  }
 
   ngOnInit() {}
 
