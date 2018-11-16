@@ -25,7 +25,12 @@ export class OrdemCompraComponent implements OnInit {
   ngOnInit() {}
 
   public ConfirmaCompra(): void{
-    console.log(this.formulario);
+
+    if(this.formulario.status === 'INVALID'){
+      this.formulario.get('endereco').markAsTouched();
+      this.formulario.get('numero').markAsTouched();
+      this.formulario.get('formaPagamento').markAsTouched();
+    }
   }
 
 }
