@@ -62,9 +62,6 @@
       </div>
       <br />
 
-      <pre>{{ formulario.value | json }}</pre>
-      <pre>Válido = {{ formulario.valid | json }}</pre>
-      <pre>Invalido = {{ formulario.invalid | json }}</pre>
       <h5>Dados de entrega</h5>
       <hr />
 
@@ -94,9 +91,9 @@
 
       <div class="form-row">
           
-        <div class="form-group col-md-3">
+        <div class="form-group col-md-3"> 
           <select class="form-control" name="formaPagamento" ngModel required #selectFormaPagamento="ngModel">
-            <option selected="selected">Selecione uma opção</option>
+            <option value="" selected disabled hidden>Selecione uma opção</option>
             <option value="dinheiro">Dinheiro</option>
             <option value="debito">Débito</option>
           </select>

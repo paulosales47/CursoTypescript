@@ -220,6 +220,13 @@
       "Complemento": "Casa 2",
       "FormaPagamento": "debito",
       "id": 5
+    },
+    {
+      "Endereco": "Praça Primeiro de Maio, 153",
+      "Numero": 153,
+      "Complemento": "Casa 2",
+      "FormaPagamento": "dinheiro",
+      "id": 6
     }
   ]
 }
