@@ -72,7 +72,7 @@ export class OrdemCompraComponent implements OnInit {
       ,this.complemento
       ,this.formaPagamento)
 
-      this.ordemCompraService.EfetivarCompra(this.ordemCompra);
+      this.ordemCompraService.EfetivarCompra(this.ordemCompra).subscribe();
   }
 
 }
