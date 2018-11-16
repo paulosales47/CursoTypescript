@@ -19,6 +19,8 @@ export class OrdemCompraComponent implements OnInit {
   public enderecoEstadoPrimitivo: boolean = true
   public numeroEstadoPrimitivo: boolean = true
   public formaPagamentoEstadoPrimitivo: boolean = true
+  
+  public formValido: boolean = false;
 
   constructor() { }
 
@@ -29,12 +31,14 @@ export class OrdemCompraComponent implements OnInit {
     this.endereco = endereco;
     this.enderecoValido= this.endereco.length > 3 ? true :false
     this.enderecoEstadoPrimitivo = false;
+    this.habilitaForm();
   }
 
   public AtualizaNumero(numero: number): void {
     this.numero = numero;
     this.numeroValido = this.numero > -1 ? true :false
     this.numeroEstadoPrimitivo = false;
+    this.habilitaForm();
   }
 
   public AtualizaComplemento(complemento: string): void {
@@ -45,6 +49,16 @@ export class OrdemCompraComponent implements OnInit {
     this.formaPagamento = formaPagamento;
     this.formaPagamentoValido = (this.formaPagamento == 'debito' || this.formaPagamento == 'dinheiro') ? true : false
     this.formaPagamentoEstadoPrimitivo = false;
+    this.habilitaForm();
+  }
+
+  public habilitaForm(): void {
+
+    this.formValido =
+         this.enderecoValido 
+      && this.numeroValido 
+      && this.formaPagamentoValido;
+
   }
 
 }
