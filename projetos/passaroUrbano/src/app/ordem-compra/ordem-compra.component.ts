@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {OrdemCompraService } from './../ordem-compra.service'
+import { OrdemCompra } from '../shared/ordem-compra.model';
 
 @Component({
   selector: 'aws-ordem-compra',
@@ -23,6 +24,7 @@ export class OrdemCompraComponent implements OnInit {
   public formaPagamentoEstadoPrimitivo: boolean = true
   
   public formValido: boolean = false;
+  public ordemCompra: OrdemCompra;
 
   constructor(private ordemCompraService: OrdemCompraService) { }
 
@@ -61,7 +63,16 @@ export class OrdemCompraComponent implements OnInit {
          this.enderecoValido 
       && this.numeroValido 
       && this.formaPagamentoValido;
+  }
 
+  public ConfirmaCompra(): void {
+    this.ordemCompra = new OrdemCompra(
+       this.endereco
+      ,this.numero
+      ,this.complemento
+      ,this.formaPagamento)
+
+      this.ordemCompraService.EfetivarCompra(this.ordemCompra);
   }
 
 }
