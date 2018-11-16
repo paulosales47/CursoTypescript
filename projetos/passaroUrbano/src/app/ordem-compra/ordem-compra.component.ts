@@ -2,19 +2,23 @@ import { Component, OnInit } from '@angular/core';
 import {OrdemCompraService } from './../ordem-compra.service'
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { OrdemCompra } from '../shared/ordem-compra.model';
+import {CarrinhoCompraService} from '../carrinho-compra.service'
+import {ItemCarrinhoCompra} from '../shared/item-carrinho-compra.model'
 
 @Component({
   selector: 'aws-ordem-compra',
   templateUrl: './ordem-compra.component.html',
   styleUrls: ['./ordem-compra.component.css'],
-  providers: [ OrdemCompraService ]
+  providers: [ OrdemCompraService, CarrinhoCompraService ]
 })
 export class OrdemCompraComponent implements OnInit {
 
   public formulario: FormGroup;
   public idOrdemCompra: number;
 
-  constructor(private ordemCompraService: OrdemCompraService) 
+  constructor(
+       private ordemCompraService: OrdemCompraService
+      ,private carrinhoCompraService: CarrinhoCompraService) 
   {
     this.formulario = new FormGroup({
        'endereco': new FormControl(null, [Validators.required, Validators.minLength(3), Validators.maxLength(120)])
@@ -24,7 +28,9 @@ export class OrdemCompraComponent implements OnInit {
     })
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(this.carrinhoCompraService.ExibeItensCarrinho());
+  }
 
   public ConfirmaCompra(): void{
     
