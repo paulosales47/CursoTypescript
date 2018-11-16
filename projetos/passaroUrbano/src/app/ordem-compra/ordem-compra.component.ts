@@ -27,7 +27,7 @@ export class OrdemCompraComponent implements OnInit {
   constructor(private ordemCompraService: OrdemCompraService) { }
 
   ngOnInit() {
-    this.ordemCompraService.EfetivarCompra();
+    //this.ordemCompraService.EfetivarCompra(ordemCompra);
   }
 
   public AtualizaEndereco(endereco: string): void {
