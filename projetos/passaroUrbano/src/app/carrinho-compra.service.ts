@@ -24,8 +24,16 @@ export class CarrinhoCompraService{
             this.itens.push(itemCarrinho);
         else
             itemCarrinhoExistente.quantidade += 1;
-        
-            
+    }
+
+    public CalculaTotalPrecoCarrinho(): number{
+        let total: number = 0;
+
+        this.itens.map((item: ItemCarrinhoCompra) => {
+            total += (item.valor * item.quantidade);
+        })
+
+        return total;
     }
 }
 
