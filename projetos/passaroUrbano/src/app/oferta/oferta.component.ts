@@ -34,4 +34,8 @@ export class OfertaComponent implements OnInit {
 
   }
 
+  public AdicionarItemCarrinho(): void{
+    this.carrinhoCompraService.IncluirItem(this.oferta);
+  }
+
 }
