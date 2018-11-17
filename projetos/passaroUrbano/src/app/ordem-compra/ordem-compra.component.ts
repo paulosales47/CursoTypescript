@@ -9,12 +9,13 @@ import {ItemCarrinhoCompra} from '../shared/item-carrinho-compra.model'
   selector: 'aws-ordem-compra',
   templateUrl: './ordem-compra.component.html',
   styleUrls: ['./ordem-compra.component.css'],
-  providers: [ OrdemCompraService, CarrinhoCompraService ]
+  providers: [ OrdemCompraService ]
 })
 export class OrdemCompraComponent implements OnInit {
 
   public formulario: FormGroup;
   public idOrdemCompra: number;
+  public itensCarrinho: Array<ItemCarrinhoCompra> = []
 
   constructor(
        private ordemCompraService: OrdemCompraService
@@ -29,7 +30,7 @@ export class OrdemCompraComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.carrinhoCompraService.ExibeItensCarrinho());
+    this.itensCarrinho = this.carrinhoCompraService.ExibeItensCarrinho();
   }
 
   public ConfirmaCompra(): void{
