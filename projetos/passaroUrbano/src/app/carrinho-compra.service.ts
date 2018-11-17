@@ -17,8 +17,15 @@ export class CarrinhoCompraService{
             ,oferta.valor
             ,1
         )
-
-        this.itens.push(itemCarrinho);
+        
+        let itemCarrinhoExistente = this.itens.find((item: ItemCarrinhoCompra) => item.id === itemCarrinho.id)
+        
+        if(itemCarrinhoExistente === undefined) 
+            this.itens.push(itemCarrinho);
+        else
+            itemCarrinhoExistente.quantidade += 1;
+        
+            
     }
 }
 
