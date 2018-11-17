@@ -20,10 +20,10 @@ export class CarrinhoCompraService{
         
         let itemCarrinhoExistente = this.itens.find((item: ItemCarrinhoCompra) => item.id === itemCarrinho.id)
         
-        if(itemCarrinhoExistente === undefined) 
-            this.itens.push(itemCarrinho);
-        else
+        if(itemCarrinhoExistente) 
             itemCarrinhoExistente.quantidade += 1;
+        else
+            this.itens.push(itemCarrinho);
     }
 
     public CalculaTotalPrecoCarrinho(): number{
@@ -34,6 +34,14 @@ export class CarrinhoCompraService{
         })
 
         return total;
+    }
+
+    public AdicionarItemCarrinho(itemCarrinhhoAdicionar: ItemCarrinhoCompra){
+        let itemEncontrado = this.itens.find((item: ItemCarrinhoCompra) =>
+            item.id === itemCarrinhhoAdicionar.id)
+
+        if(itemEncontrado)
+            itemEncontrado.quantidade++;
     }
 }
 
