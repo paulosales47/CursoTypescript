@@ -36,12 +36,27 @@ export class CarrinhoCompraService{
         return total;
     }
 
+    private ProcuraItemCarrinho(itemBusca: ItemCarrinhoCompra): ItemCarrinhoCompra{
+        return this.itens.find((item: ItemCarrinhoCompra) =>
+            item.id === itemBusca.id)        
+    }
+
     public AdicionarItemCarrinho(itemCarrinhhoAdicionar: ItemCarrinhoCompra){
-        let itemEncontrado = this.itens.find((item: ItemCarrinhoCompra) =>
-            item.id === itemCarrinhhoAdicionar.id)
+
+        let itemEncontrado = this.ProcuraItemCarrinho(itemCarrinhhoAdicionar);
 
         if(itemEncontrado)
             itemEncontrado.quantidade++;
+    }
+
+    public RemoverItemCarrinho(itemCarrinhhoRemover: ItemCarrinhoCompra){
+
+        let itemEncontrado = this.ProcuraItemCarrinho(itemCarrinhhoRemover);
+
+        if(itemEncontrado && itemEncontrado.quantidade > 1)
+            itemEncontrado.quantidade--;
+        else if(itemEncontrado)
+            this.itens.splice(this.itens.indexOf(itemEncontrado), 1)
     }
 }
 
