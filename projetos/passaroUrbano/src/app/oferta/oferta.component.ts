@@ -8,7 +8,7 @@ import { CarrinhoCompraService} from '../carrinho-compra.service'
   selector: 'aws-oferta',
   templateUrl: './oferta.component.html',
   styleUrls: ['./oferta.component.css'],
-  providers: [OfertasService, CarrinhoCompraService]
+  providers: [OfertasService ]
 })
 export class OfertaComponent implements OnInit {
   public oferta: Oferta;
@@ -35,7 +35,7 @@ export class OfertaComponent implements OnInit {
   }
 
   public AdicionarItemCarrinho(): void{
-    this.carrinhoCompraService.IncluirItem(this.oferta);
+    this.carrinhoCompraService.IncluirItem(this.oferta); 
   }
 
 }
