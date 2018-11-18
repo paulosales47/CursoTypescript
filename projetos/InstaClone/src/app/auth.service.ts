@@ -29,7 +29,7 @@ export class Autenticacao{
         .then(() => {
             firebase.auth().currentUser.getIdToken()
             .then((token:string) => {
-                this.token = token
+                localStorage.setItem('token', token);
                 this.router.navigate(['/home']);
             });
         })
@@ -37,7 +37,9 @@ export class Autenticacao{
     }
 
     public UsuarioAutenticado(): boolean{
-        return this.token !== undefined;
+        console.log(localStorage.getItem('token'))
+        console.log(localStorage.getItem('token') !== null)
+        return localStorage.getItem('token') !== null;
     }
 
 }
