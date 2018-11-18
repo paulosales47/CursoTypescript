@@ -1,7 +1,13 @@
+import {Injectable} from '@angular/core'
+import {Router} from '@angular/router'
 import { Usuario } from "./acesso/shared/usuario.model";
 import * as firebase from 'firebase'
+
+@Injectable()
 export class Autenticacao{
     
+    constructor(private router: Router){}
+
     public token: string
 
     public CadastrarUsuario(usuario: Usuario): Promise<any>{
@@ -22,7 +28,10 @@ export class Autenticacao{
         .signInWithEmailAndPassword(usuario.email, usuario.senha)
         .then(() => {
             firebase.auth().currentUser.getIdToken()
-            .then((token:string) => this.token = token);
+            .then((token:string) => {
+                this.token = token
+                this.router.navigate(['/home']);
+            });
         })
         .catch((erro: any) => console.log(erro));
     }
