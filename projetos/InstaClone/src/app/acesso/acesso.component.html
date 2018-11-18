@@ -8,7 +8,7 @@
 
     <div class="col-sm-6 d-flex justify-content-start" [@animacao-painel]="estadoPainel">
       <div *ngIf="exibePainelLogin else painelCadastro">
-        <app-login></app-login>
+        <app-login (exibirPainelLogin)="ExibirPainel($event)"></app-login>
       </div>
       <ng-template #painelCadastro>
         <app-cadastro></app-cadastro>

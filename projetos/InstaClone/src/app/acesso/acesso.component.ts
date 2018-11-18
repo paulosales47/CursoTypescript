@@ -30,4 +30,8 @@ export class AcessoComponent implements OnInit {
   ngOnInit() {
   }
 
+  public ExibirPainel(exibePainelLogin: boolean): void{
+    this.exibePainelLogin = exibePainelLogin;
+  }
+
 }
