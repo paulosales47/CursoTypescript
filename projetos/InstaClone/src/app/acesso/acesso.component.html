@@ -4,8 +4,15 @@
       <app-banner></app-banner>
     </div>
 
+
+
     <div class="col-sm-6 d-flex justify-content-start" [@animacao-painel]="estadoPainel">
-		<app-login></app-login>
+      <div *ngIf="exibePainelLogin else painelCadastro">
+        <app-login></app-login>
+      </div>
+      <ng-template #painelCadastro>
+        <app-cadastro></app-cadastro>
+      </ng-template>
     </div>  
   </div>
 </div>

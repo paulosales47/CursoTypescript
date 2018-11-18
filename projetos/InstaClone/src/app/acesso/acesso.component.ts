@@ -23,6 +23,7 @@ export class AcessoComponent implements OnInit {
 
   public estadoBanner:string = 'criado';
   public estadoPainel:string = 'criado';
+  public exibePainelLogin: boolean = true;
 
   constructor() { }
 
