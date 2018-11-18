@@ -8,8 +8,6 @@ export class Autenticacao{
     
     constructor(private router: Router){}
 
-    public token: string
-
     public CadastrarUsuario(usuario: Usuario): Promise<any>{
         return firebase.auth()
         .createUserWithEmailAndPassword(usuario.email,usuario.senha)
@@ -36,10 +34,19 @@ export class Autenticacao{
         .catch((erro: any) => console.log(erro));
     }
 
-    public UsuarioAutenticado(): boolean{
-        console.log(localStorage.getItem('token'))
-        console.log(localStorage.getItem('token') !== null)
-        return localStorage.getItem('token') !== null;
+    public UsuarioAutenticado(): boolean
+    {
+        if(localStorage.getItem('token') !== null)
+            return true;
+
+        this.router.navigate(['/']);
+        return false;
+    }
+
+    public Sair(): void{
+        firebase.auth().signOut()
+        .then(() => localStorage.removeItem('token'))
+        
     }
 
 }
