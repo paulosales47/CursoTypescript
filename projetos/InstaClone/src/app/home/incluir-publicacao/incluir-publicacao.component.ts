@@ -11,6 +11,7 @@ export class IncluirPublicacaoComponent implements OnInit {
 
   public formulario: FormGroup;
   public email: string
+  public imagem: any
 
   constructor(private bd: BD) {
 
@@ -31,11 +32,12 @@ export class IncluirPublicacaoComponent implements OnInit {
     this.bd.SalvarNovaPublicacao({
        email: this.email
       ,titulo: this.formulario.value.titulo
+      ,imagem: this.imagem
     });
   }
 
   public PreparaIamgemUpload(event: Event): void{
-    console.log((<HTMLInputElement>event.target).files)
+     this.imagem = (<HTMLInputElement>event.target).files[0]
   }
 
 }
