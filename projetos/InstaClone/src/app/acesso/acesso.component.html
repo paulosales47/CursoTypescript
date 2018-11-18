@@ -11,7 +11,7 @@
         <app-login (exibirPainelLogin)="ExibirPainel($event)"></app-login>
       </div>
       <ng-template #painelCadastro>
-        <app-cadastro></app-cadastro>
+        <app-cadastro (exibirPainelLogin)="ExibirPainel($event)"></app-cadastro>
       </ng-template>
     </div>  
   </div>
