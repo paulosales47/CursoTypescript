@@ -2,12 +2,14 @@
   <div class="card-body">
     <div class="card-title"></div>
     
-    <form>
+    <form [formGroup]="formulario" (ngSubmit)="CadastraUsuario()">
       <div class="form-group">
         <input 
           type="email" 
           class="form-control" 
           placeholder="E-mail"
+          formControlName="email"
+          autocomplete="off"
         >
       </div>
       <div class="form-group">
@@ -15,6 +17,8 @@
           type="text"
           class="form-control" 
           placeholder="Nome completo"
+          formControlName="nomeCompleto"
+          autocomplete="off"
         >
       </div>
       <div class="form-group">
@@ -22,6 +26,8 @@
           type="text"
           class="form-control" 
           placeholder="Nome de usuário"
+          formControlName="nomeUsuario"
+          autocomplete="off"
         >
       </div>
       <div class="form-group">
@@ -29,6 +35,8 @@
           type="password"
           class="form-control" 
           placeholder="Senha"
+          formControlName="senha"
+          autocomplete="off"
         >
       </div>
       <button type="submit" class="btn btn-primary btn-sm btn-block">Cadastre-se</button>
