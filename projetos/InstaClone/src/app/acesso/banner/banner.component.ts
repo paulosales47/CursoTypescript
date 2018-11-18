@@ -22,9 +22,9 @@ export class BannerComponent implements OnInit {
   constructor() 
   {
     this.imagens = [
-      {estado: 'escondido', url: '../../../assets/banner-acesso/img_1.png'},
+      {estado: 'visivel', url: '../../../assets/banner-acesso/img_1.png'},
       {estado: 'escondido', url: '../../../assets/banner-acesso/img_2.png'},
-      {estado: 'visivel', url: '../../../assets/banner-acesso/img_3.png'},
+      {estado: 'escondido', url: '../../../assets/banner-acesso/img_3.png'},
       {estado: 'escondido', url: '../../../assets/banner-acesso/img_4.png'},
       {estado: 'escondido', url: '../../../assets/banner-acesso/img_5.png'}
     ]
