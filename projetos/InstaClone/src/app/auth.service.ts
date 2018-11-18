@@ -15,4 +15,13 @@ export class Autenticacao{
         })
         .catch((erro: any) => console.log(erro))
     }
+
+    public Autenticar(usuario: Usuario): void{
+        firebase.auth()
+        .signInWithEmailAndPassword(usuario.email, usuario.senha)
+        .then((resposta: any) => {
+            console.log(resposta);
+        })
+        .catch((erro: any) => console.log(erro));
+    }
 }

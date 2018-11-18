@@ -1,5 +1,7 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {Autenticacao} from '../../auth.service'
+import { Usuario } from '../shared/usuario.model';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +15,7 @@ export class LoginComponent implements OnInit {
 
   public formulario: FormGroup;
 
-  constructor() {
+  constructor(private autenticacao: Autenticacao) {
     this.formulario = new FormGroup({
        'email': new FormControl(null, [Validators.required])
       ,'senha': new FormControl(null, [Validators.required])
@@ -28,7 +30,14 @@ export class LoginComponent implements OnInit {
   }
 
   public Autenticar(): void{
-    
+
+    let usuario:Usuario = new Usuario(
+       this.formulario.value.email
+      ,null
+      ,null
+      ,this.formulario.value.senha)
+
+    this.autenticacao.Autenticar(usuario)
   }
 
 }
