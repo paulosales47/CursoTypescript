@@ -4,11 +4,13 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AcessoComponent } from './acesso/acesso.component';
+import { BannerComponent } from './acesso/banner/banner.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AcessoComponent
+    AcessoComponent,
+    BannerComponent
   ],
   imports: [
     BrowserModule,
