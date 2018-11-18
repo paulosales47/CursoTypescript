@@ -1,5 +1,5 @@
 <button (click)="ToggleEstado()">Alterar estado</button>
 
 <div class="banner-background">
-    <img src="../../../assets/banner-acesso/img_1.png" alt="Pagina Inicial" [@banner]="estado">
+    <img *ngFor="let imagem of imagens" [src]="imagem.url" alt="Pagina Inicial" [@banner]="imagem.estado">
 </div>
