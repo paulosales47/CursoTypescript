@@ -35,4 +35,9 @@ export class Autenticacao{
         })
         .catch((erro: any) => console.log(erro));
     }
+
+    public UsuarioAutenticado(): boolean{
+        return this.token !== undefined;
+    }
+
 }
