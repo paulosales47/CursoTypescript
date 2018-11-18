@@ -1,18 +1,52 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
+import { HttpModule} from '@angular/http'
+import { RouterModule } from '@angular/router'
+import { ReactiveFormsModule } from '@angular/forms'
 
-import { AppRoutingModule } from './app-routing.module';
+import localePtBR from '@angular/common/locales/pt'
+import { registerLocaleData } from '@angular/common';
+
+import { ROUTES } from './app.routes'
+
 import { AppComponent } from './app.component';
+import { TopoComponent } from './topo/topo.component';
+import { HomeComponent } from './home/home.component';
+import { RodapeComponent } from './rodape/rodape.component';
+import { RestauranteComponent } from './restaurante/restaurante.component';
+import { DiversaoComponent } from './diversao/diversao.component';
+import { OfertaComponent } from './oferta/oferta.component';
+import { ComoUsarComponent } from './oferta/como-usar/como-usar.component';
+import { OndeFicaComponent } from './oferta/onde-fica/onde-fica.component';
+import { DescricaoReduzida } from './util/descricao-reduzida.pipe';
+import { OrdemCompraComponent } from './ordem-compra/ordem-compra.component';
+import { OrdemCompraSucessoComponent } from './ordem-compra-sucesso/ordem-compra-sucesso.component'
+import { CarrinhoCompraService } from './carrinho-compra.service'
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TopoComponent,
+    HomeComponent,
+    RodapeComponent,
+    RestauranteComponent,
+    DiversaoComponent,
+    OfertaComponent,
+    ComoUsarComponent,
+    OndeFicaComponent,
+    DescricaoReduzida,
+    OrdemCompraComponent,
+    OrdemCompraSucessoComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    HttpModule,
+    ReactiveFormsModule,
+    RouterModule.forRoot(ROUTES)
   ],
-  providers: [],
+  providers: [{provide: LOCALE_ID, useValue: 'pt-BR'}, CarrinhoCompraService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+registerLocaleData(localePtBR);
