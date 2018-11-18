@@ -19,7 +19,7 @@ export class OrdemCompraComponent implements OnInit {
 
   constructor(
        private ordemCompraService: OrdemCompraService
-      ,private carrinhoCompraService: CarrinhoCompraService) 
+      ,public carrinhoCompraService: CarrinhoCompraService) 
   {
     this.formulario = new FormGroup({
        'endereco': new FormControl(null, [Validators.required, Validators.minLength(3), Validators.maxLength(120)])
