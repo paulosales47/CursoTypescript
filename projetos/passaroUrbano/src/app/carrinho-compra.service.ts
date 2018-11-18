@@ -58,5 +58,9 @@ export class CarrinhoCompraService{
         else if(itemEncontrado)
             this.itens.splice(this.itens.indexOf(itemEncontrado), 1)
     }
+
+    public LimparCarrinho(): void{
+        this.itens = [];
+    }
 }
 

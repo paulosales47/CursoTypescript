@@ -52,7 +52,11 @@ export class OrdemCompraComponent implements OnInit {
       )
       
       this.ordemCompraService.EfetivarCompra(ordemCompra)
-      .subscribe((idOrdemCompra: number) => this.idOrdemCompra = idOrdemCompra)
+      .subscribe((idOrdemCompra: number) => {
+        this.idOrdemCompra = idOrdemCompra;
+        this.carrinhoCompraService.LimparCarrinho();      
+      })
+      
     }
   }
 
