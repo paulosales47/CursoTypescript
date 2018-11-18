@@ -10,7 +10,8 @@ import { BannerComponent } from './acesso/banner/banner.component';
 import { LoginComponent } from './acesso/login/login.component';
 import { CadastroComponent } from './acesso/cadastro/cadastro.component';
 import { Autenticacao } from './auth.service';
-import { HomeComponent } from './home/home.component'
+import { HomeComponent } from './home/home.component';
+import { PublicacoesComponent } from './home/publicacoes/publicacoes.component'
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { HomeComponent } from './home/home.component'
     BannerComponent,
     LoginComponent,
     CadastroComponent,
-    HomeComponent
+    HomeComponent,
+    PublicacoesComponent
   ],
   imports: [
     BrowserModule,
