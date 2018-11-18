@@ -27,11 +27,15 @@ export class IncluirPublicacaoComponent implements OnInit {
   }
 
   public Publicar():void{
-    
+
     this.bd.SalvarNovaPublicacao({
        email: this.email
       ,titulo: this.formulario.value.titulo
     });
+  }
+
+  public PreparaIamgemUpload(event: Event): void{
+    console.log((<HTMLInputElement>event.target).files)
   }
 
 }

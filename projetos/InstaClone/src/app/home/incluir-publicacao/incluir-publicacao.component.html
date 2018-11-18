@@ -11,6 +11,7 @@
         </div>
         <div class="modal-body">
           <input type="text" placeholder="Titulo da publicação" class="form-control" formControlName="titulo">
+          <input type="file" class="form-control" accept="image/*" (change)="PreparaIamgemUpload($event)">
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Fechar</button>
