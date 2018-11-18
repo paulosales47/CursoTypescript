@@ -6,7 +6,7 @@
 
 
 
-    <div class="col-sm-6 d-flex justify-content-start" [@animacao-painel]="estadoPainel">
+    <div class="col-sm-6 d-flex justify-content-start" [@animacao-painel]="estadoPainel" (@animacao-painel.start)="InicioAnimacaoPainel()" (@animacao-painel.done)="FimAnimacaoPainel()">
       <div *ngIf="exibePainelLogin else painelCadastro">
         <app-login (exibirPainelLogin)="ExibirPainel($event)"></app-login>
       </div>

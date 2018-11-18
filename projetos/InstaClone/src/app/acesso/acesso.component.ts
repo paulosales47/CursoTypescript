@@ -41,4 +41,12 @@ export class AcessoComponent implements OnInit {
     this.exibePainelLogin = exibePainelLogin;
   }
 
+  public InicioAnimacaoPainel(): void {
+    console.log('Inicio da animação');
+  }
+
+  public FimAnimacaoPainel(): void {
+    console.log('Fim da animação');
+  }
+
 }
