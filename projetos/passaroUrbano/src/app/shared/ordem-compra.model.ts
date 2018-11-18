@@ -1,3 +1,5 @@
+import { ItemCarrinhoCompra } from "./item-carrinho-compra.model";
+
 export class OrdemCompra {
 
     constructor(
@@ -5,5 +7,6 @@ export class OrdemCompra {
         ,public Numero: number
         ,public Complemento: string
         ,public FormaPagamento: string
+        ,public ItensCarrinhoCompra: Array<ItemCarrinhoCompra>
         ){}
 }

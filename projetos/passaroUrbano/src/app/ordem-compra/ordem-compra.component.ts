@@ -48,6 +48,7 @@ export class OrdemCompraComponent implements OnInit {
         ,this.formulario.value.numero
         ,this.formulario.value.complemento
         ,this.formulario.value.formaPagamento
+        ,this.carrinhoCompraService.ExibeItensCarrinho()
       )
       
       this.ordemCompraService.EfetivarCompra(ordemCompra)
