@@ -13,6 +13,7 @@ import { Autenticacao } from './auth.service';
 import { HomeComponent } from './home/home.component';
 import { PublicacoesComponent } from './home/publicacoes/publicacoes.component';
 import { IncluirPublicacaoComponent } from './home/incluir-publicacao/incluir-publicacao.component'
+import {BD} from './bd.service'
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ import { IncluirPublicacaoComponent } from './home/incluir-publicacao/incluir-pu
     BrowserAnimationsModule,
     ReactiveFormsModule
   ],
-  providers: [Autenticacao],
+  providers: [Autenticacao, BD],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
