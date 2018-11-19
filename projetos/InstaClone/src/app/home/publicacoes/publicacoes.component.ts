@@ -10,19 +10,21 @@ import * as firebase from 'firebase'
 export class PublicacoesComponent implements OnInit {
 
   public publicacoes: any
+  public email: string
 
   constructor(public bd: BD) { }
 
   ngOnInit() {
      firebase.auth().onAuthStateChanged((user) => {
-      this.AtualizarTimeLine(user.email);
+       this.email = user.email;
+      this.AtualizarTimeLine();
      });
 
      
   }
 
-  public AtualizarTimeLine(email: string): void {
-    this.bd.ConsultaPublicacoes(email)
+  public AtualizarTimeLine(): void {
+    this.bd.ConsultaPublicacoes(this.email)
     .then((publicacoes: any) => this.publicacoes = publicacoes);
   }
 
