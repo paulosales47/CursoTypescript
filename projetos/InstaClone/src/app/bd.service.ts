@@ -16,7 +16,7 @@ export class BD {
         .put(publicacao.imagem)
         .on(firebase.storage.TaskEvent.STATE_CHANGED,
              (snapshot: any)=> this.progressoUpload.estado = snapshot
-            ,(erro) => this.progressoUpload.status = erro
+            ,(erro) => this.progressoUpload.status = `Ocorreu o seguinte erro durante a publicação: ${erro}`
             ,() => this.progressoUpload.status = 'concluido')
         
         // firebase.database().ref(`publicacoes/${btoa(publicacao.email)}`)

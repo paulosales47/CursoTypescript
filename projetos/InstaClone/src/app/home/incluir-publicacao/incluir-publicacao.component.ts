@@ -17,6 +17,8 @@ export class IncluirPublicacaoComponent implements OnInit {
   public formulario: FormGroup;
   public email: string
   public imagem: any
+  public progressoPublicacao: string = 'pendente'
+  public porcentagemUpload: number = 0;
 
   constructor(private bd: BD, private progressoUpload: ProgressoUpload) {
 
@@ -47,11 +49,14 @@ export class IncluirPublicacaoComponent implements OnInit {
 
     acompanhaProgressoUpload
     .subscribe(() => {
-      console.log(this.progressoUpload.estado);
-      console.log(this.progressoUpload.status);
+      this.progressoPublicacao = 'andamento'
+      this.porcentagemUpload = Math.round((this.progressoUpload.estado.bytesTransferred / this.progressoUpload.estado.totalBytes)*100)
 
       if(this.progressoUpload.status === 'concluido')
+      {
         continuaSubscribe.next(false);
+        this.progressoPublicacao = 'concluido'
+      }
     })
 
     
