@@ -26,9 +26,26 @@ export class BD {
     }
 
     public ConsultaPublicacoes(email: string): any{
-        console.log(email);
+        
         firebase.database().ref(`publicacoes/${btoa(email)}`)
         .once('value')
-        .then((snapshot: any) => console.log(snapshot.val()));
+        .then((snapshot: any) => {
+            console.log(snapshot.val())
+            
+            let publicacoes: Array<any> = [];
+            
+            snapshot.forEach((childSnapshot: any) => {
+
+                let publicacao = childSnapshot.val();
+
+                firebase.storage().ref()
+                .child(`imagens/${childSnapshot.key}`)
+                .getDownloadURL()
+                .then((url: string) => {
+                    publicacao.urlImagem = url;
+                    publicacoes.push(publicacao);
+                })
+            });
+        });
     }
 }
