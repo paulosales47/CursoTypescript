@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import {BD} from '../../bd.service'
 import * as firebase from 'firebase'
+import {ProgressoUpload} from '../../progresso-upload.service'
 @Component({
   selector: 'app-incluir-publicacao',
   templateUrl: './incluir-publicacao.component.html',
@@ -13,7 +14,7 @@ export class IncluirPublicacaoComponent implements OnInit {
   public email: string
   public imagem: any
 
-  constructor(private bd: BD) {
+  constructor(private bd: BD, private progressoUpload: ProgressoUpload) {
 
     this.formulario = new FormGroup({
       'titulo': new FormControl(null)

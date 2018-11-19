@@ -1,6 +1,11 @@
 import * as firebase from 'firebase'
+import {Injectable} from '@angular/core'
+import {ProgressoUpload} from './progresso-upload.service'
 
+@Injectable()
 export class BD {
+
+    constructor(private progressoUpload: ProgressoUpload){}
 
     public SalvarNovaPublicacao(publicacao: any):void {
 
@@ -10,10 +15,9 @@ export class BD {
         .child(`imagens/${nomeImagem}`)
         .put(publicacao.imagem)
         .on(firebase.storage.TaskEvent.STATE_CHANGED,
-             (snapshot: any)=> console.log(snapshot)
-            ,(erro) => console.log(erro)
-            ,() => console.log('Fim do upload')
-            )
+             (snapshot: any)=> this.progressoUpload.estado = snapshot
+            ,(erro) => this.progressoUpload.status = erro
+            ,() => this.progressoUpload.status = 'concluido')
         
         // firebase.database().ref(`publicacoes/${btoa(publicacao.email)}`)
         // .push({titulo: publicacao.titulo})
