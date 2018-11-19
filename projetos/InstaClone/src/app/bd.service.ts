@@ -23,7 +23,12 @@ export class BD {
                  ,(erro) => this.progressoUpload.status = `Ocorreu o seguinte erro durante a publicação: ${erro}`
                  ,() => this.progressoUpload.status = 'concluido')
         })
+    }
 
-
+    public ConsultaPublicacoes(email: string): any{
+        console.log(email);
+        firebase.database().ref(`publicacoes/${btoa(email)}`)
+        .once('value')
+        .then((snapshot: any) => console.log(snapshot.val()));
     }
 }
