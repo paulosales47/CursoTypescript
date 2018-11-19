@@ -31,8 +31,6 @@ export class BD {
             firebase.database().ref(`publicacoes/${btoa(email)}`)
             .once('value')
             .then((snapshot: any) => {
-                console.log(snapshot.val())
-                
                 let publicacoes: Array<any> = [];
                 
                 snapshot.forEach((childSnapshot: any) => {
@@ -51,7 +49,6 @@ export class BD {
     
                         publicacoes.push(publicacao);
                     });
-                    
                 });
 
                 resolve(publicacoes);
