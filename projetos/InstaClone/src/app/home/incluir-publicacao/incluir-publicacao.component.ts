@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import {BD} from '../../bd.service'
 import * as firebase from 'firebase'
 import {ProgressoUpload} from '../../progresso-upload.service'
-import { Observable, interval, observable, Subject, pipe } from 'rxjs';
+import { interval, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 
@@ -19,6 +19,9 @@ export class IncluirPublicacaoComponent implements OnInit {
   public imagem: any
   public progressoPublicacao: string = 'pendente'
   public porcentagemUpload: number = 0;
+  
+  @Output()
+  public atualizarTimeLine: EventEmitter<any> = new EventEmitter<any>();
 
   constructor(private bd: BD, private progressoUpload: ProgressoUpload) {
 
@@ -56,6 +59,7 @@ export class IncluirPublicacaoComponent implements OnInit {
       {
         continuaSubscribe.next(false);
         this.progressoPublicacao = 'concluido'
+        this.atualizarTimeLine.emit();
       }
     })
 

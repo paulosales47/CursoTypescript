@@ -16,4 +16,8 @@ export class HomeComponent implements OnInit {
   public Sair():void{
     this.autenticacao.Sair();
   }
+
+  public AtualizarTimeLine(): void{
+    console.log('teste');
+  }
 }
