@@ -9,6 +9,8 @@ import * as firebase from 'firebase'
 })
 export class PublicacoesComponent implements OnInit {
 
+  public publicacoes: any
+
   constructor(public bd: BD) { }
 
   ngOnInit() {
@@ -20,7 +22,8 @@ export class PublicacoesComponent implements OnInit {
   }
 
   public AtualizarTimeLine(email: string): void {
-    this.bd.ConsultaPublicacoes(email);
+    this.bd.ConsultaPublicacoes(email)
+    .then((publicacoes: any) => this.publicacoes = publicacoes);
   }
 
 }

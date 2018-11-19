@@ -25,26 +25,37 @@ export class BD {
         })
     }
 
-    public ConsultaPublicacoes(email: string): any{
+    public ConsultaPublicacoes(email: string): Promise<any>{
         
-        firebase.database().ref(`publicacoes/${btoa(email)}`)
-        .once('value')
-        .then((snapshot: any) => {
-            console.log(snapshot.val())
-            
-            let publicacoes: Array<any> = [];
-            
-            snapshot.forEach((childSnapshot: any) => {
+        return new Promise((resolve, reject) => {
+            firebase.database().ref(`publicacoes/${btoa(email)}`)
+            .once('value')
+            .then((snapshot: any) => {
+                console.log(snapshot.val())
+                
+                let publicacoes: Array<any> = [];
+                
+                snapshot.forEach((childSnapshot: any) => {
+    
+                    let publicacao = childSnapshot.val();
+    
+                    firebase.storage().ref()
+                    .child(`imagens/${childSnapshot.key}`)
+                    .getDownloadURL()
+                    .then((url: string) => {
+                        publicacao.urlImagem = url;
+    
+                        firebase.database().ref(`usuario_detalhe/${btoa(email)}`)
+                        .once('value')
+                        .then((snapshot: any) => publicacao.nomeUsuario = snapshot.val().nomeUsuario);
+    
+                        publicacoes.push(publicacao);
+                    });
+                    
+                });
 
-                let publicacao = childSnapshot.val();
+                resolve(publicacoes);
 
-                firebase.storage().ref()
-                .child(`imagens/${childSnapshot.key}`)
-                .getDownloadURL()
-                .then((url: string) => {
-                    publicacao.urlImagem = url;
-                    publicacoes.push(publicacao);
-                })
             });
         });
     }
