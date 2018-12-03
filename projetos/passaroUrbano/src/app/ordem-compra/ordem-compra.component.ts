@@ -39,7 +39,6 @@ export class OrdemCompraComponent implements OnInit {
       this.formulario.get('endereco').markAsTouched();
       this.formulario.get('numero').markAsTouched();
       this.formulario.get('formaPagamento').markAsTouched();
-      console.log('formulário invalido');
     }
     else
     {
