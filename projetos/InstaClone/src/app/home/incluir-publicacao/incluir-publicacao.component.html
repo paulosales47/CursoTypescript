@@ -28,7 +28,11 @@
         </button>
       </div>
       <div class="modal-body">
-          Progresso do upload: {{porcentagemUpload}}%
+           <div class="progress">
+              <div class="progress-bar progress-bar-striped progress-bar-animated bg-primary" role="progressbar" [style.width]="porcentagemUpload+'%'" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                {{porcentagemUpload}}%
+              </div>
+           </div>
       </div>
     </div>
 
