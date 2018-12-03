@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
   public exibirPainelLogin:EventEmitter<boolean> = new EventEmitter<boolean>()
 
   public formulario: FormGroup;
+  public erroAutenticacao: string;
 
   constructor(private autenticacao: Autenticacao) {
     this.formulario = new FormGroup({
@@ -29,7 +30,7 @@ export class LoginComponent implements OnInit {
     this.exibirPainelLogin.emit(false);
   }
 
-  public Autenticar(): void{
+  public Autenticar(): void {
 
     let usuario:Usuario = new Usuario(
        this.formulario.value.email
@@ -37,7 +38,7 @@ export class LoginComponent implements OnInit {
       ,null
       ,this.formulario.value.senha)
 
-    this.autenticacao.Autenticar(usuario)
+    this.erroAutenticacao = this.autenticacao.Autenticar(usuario);
   }
 
 }

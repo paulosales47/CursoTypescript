@@ -21,8 +21,9 @@ export class Autenticacao{
         .catch((erro: any) => console.log(erro))
     }
 
-    public Autenticar(usuario: Usuario): void{
-        firebase.auth()
+    public Autenticar(usuario: Usuario): any{
+        
+        return firebase.auth()
         .signInWithEmailAndPassword(usuario.email, usuario.senha)
         .then(() => {
             firebase.auth().currentUser.getIdToken()
@@ -31,7 +32,7 @@ export class Autenticacao{
                 this.router.navigate(['/home']);
             });
         })
-        .catch((erro: any) => console.log(erro));
+        .catch((erro: any) => erro);
     }
 
     public UsuarioAutenticado(): boolean
